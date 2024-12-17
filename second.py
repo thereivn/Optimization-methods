@@ -1,8 +1,20 @@
 import gym
+from gym import spaces, envs
 
 # Создаем окружение CartPole
-#env = gym.make('CartPole-v1', render_mode='rgb_array')
 env = gym.make('CartPole-v1', render_mode='human')
+print(env.action_space)  # > Discrete(2)
+print(env.observation_space)  # > Box(4,)
+print(env.observation_space.high)  # > array([ 2.4 , inf, 0.20943951, inf])
+print(env.observation_space.low)  # > array([-2.4 , -inf, -0.20943951, -inf])
+
+space = spaces.Discrete(8)  # Набор из 8 элементов {0, 1, 2, ..., 7}
+x = space.sample()
+assert space.contains(x)
+assert space.n == 8
+
+# Получаем все зарегистрированные окружения
+print(list(envs.registry.values()))
 
 # Запускаем 20 эпизодов
 for i_episode in range(20):
