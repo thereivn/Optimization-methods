@@ -64,10 +64,10 @@ def test_step(images, labels):
 EPOCHS = 5
 for epoch in range(EPOCHS):
     # Сброс метрик в начале каждой эпохи
-    train_loss.reset_states()
-    train_accuracy.reset_states()
-    test_loss.reset_states()
-    test_accuracy.reset_states()
+    train_loss.reset_state()
+    train_accuracy.reset_state()
+    test_loss.reset_state()
+    test_accuracy.reset_state()
 
     for images, labels in train_ds:
         train_step(images, labels)
